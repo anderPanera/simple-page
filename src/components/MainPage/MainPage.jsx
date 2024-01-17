@@ -1,6 +1,8 @@
-import { motion, AnimatePresence } from "framer-motion"
+
 import { useRef, useState } from "react"
 import { useEffect } from "react"
+import MainPageSelector from "./components/MainPageSelector/MainPageSelector"
+import MainPageContent from "./components/MainPageContent/MainPageContent"
 
 export default function MainPage() {
 
@@ -48,88 +50,12 @@ export default function MainPage() {
         setCurrentY(id)
     }
 
-    function classNames(...classes) {
-        return classes.filter(Boolean).join(' ')
-    }
+    
 
     return (
-        <div className="h-screen w-screen flex bg-bg p-5" ref={divRef}>
-            <div className="h-full w-36 shrink-0 flex flex-col ">
-                {items.map((val, i) => (
-                    <div
-                        key={i}
-                        className={classNames('flex-1 w-full cursor-pointer', 'bg-' + (i + 1))}
-                        onClick={(e) => handleClick(e, i)}
-                    >
-
-                    </div>
-                ))}
-            </div>
-            <div className={classNames('w-full h-full ease-in-out duration-[2000ms]', 'bg-' + (currentY + 1))}>
-                <AnimatePresence>
-                    {items.map((val, i) => i == currentY && !anim &&
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, }}
-                            animate={{ opacity: 1, }}
-                            exit={{ opacity: 0 }}
-                            transition={{
-                                duration: 0.5,
-                            }}
-                            className="h-full text-white absolute font-akira p-10 text-8xl flex flex-col justify-evenly"
-                        >
-                            {!anim && <motion.span className="h-full"
-                                initial={{ opacity: 0, y: direction }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -direction }}
-                                transition={{
-                                    duration: 0.3,
-                                    delay: 0.1
-                                }}
-                            >
-                                {val}.
-                            </motion.span>}
-
-
-                            <motion.div className="h-1/2"
-                                initial={{ opacity: 0, y: direction }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -direction }}
-                                transition={{
-                                    duration: 0.3,
-                                    delay: 0.2
-                                }}
-                            >
-                                <img className="h-full" src="https://www.onlygfx.com/wp-content/uploads/2022/04/angry-eye-tribal-tattoo-1325.svg"></img>
-                            </motion.div>
-                            {!anim && <motion.span className="h-full"
-                                initial={{ opacity: 0, y: direction }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -direction }}
-                                transition={{
-                                    duration: 0.3,
-                                    delay: 0.3
-                                }}
-                            >
-                                TATTOO.
-                            </motion.span>}
-
-
-                            {!anim && <motion.span className="h-full"
-                                initial={{ opacity: 0, y: direction }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -direction }}
-                                transition={{
-                                    duration: 0.3,
-                                    delay: 0.4
-                                }}
-                            >
-                                TATTOOTATTOO.
-                            </motion.span>}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
+        <div className="h-screen w-screen flex bg-black" ref={divRef}>
+            <MainPageSelector items={items} handleClick={handleClick} />
+            <MainPageContent items={items}  currentY={currentY} anim={anim} direction={direction}/>
             <span className="bg-1 bg-2 bg-3 bg-4 bg-5 bg-6 bg-7 bg-8"></span>
         </div>
     )
