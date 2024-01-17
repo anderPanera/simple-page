@@ -53,10 +53,10 @@ export default function MainPage() {
     
 
     return (
-        <div className="h-screen w-screen flex bg-black" ref={divRef}>
+        <div className="h-full w-full flex bg-black" ref={divRef}>
             <MainPageSelector items={items} handleClick={handleClick} />
             <MainPageContent items={items}  currentY={currentY} anim={anim} direction={direction}/>
-            <span className="bg-1 bg-2 bg-3 bg-4 bg-5 bg-6 bg-7 bg-8"></span>
+            <span className="absolute bg-1 bg-2 bg-3 bg-4 bg-5 bg-6 bg-7 bg-8"></span>
         </div>
     )
 }

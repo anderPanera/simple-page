@@ -29,7 +29,7 @@ export default function MainPageContent({ items, currentY, anim, direction}) {
                         </motion.span>}
 
 
-                        <motion.div className="h-1/2"
+                        <motion.div className="h-2/3"
                             initial={{ opacity: 0, y: direction }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -direction }}
