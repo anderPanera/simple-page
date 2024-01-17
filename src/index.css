@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  
     width: 0px;
 }
-  
+
+
+@font-face {
+    font-family: 'akira';
+    src: url('/assets/fonts/akira.otf');
+}
